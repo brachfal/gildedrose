@@ -5,11 +5,6 @@ import com.gildedrose.Item;
 class DefaultUpdateStrategy implements UpdateStrategy {
 
     @Override
-    public boolean isApplicable(Item item) {
-        return false;
-    }
-
-    @Override
     public void update(Item item) {
         if (item.quality > 0) {
             item.quality--;

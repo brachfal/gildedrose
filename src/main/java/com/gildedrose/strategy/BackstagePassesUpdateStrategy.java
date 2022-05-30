@@ -5,11 +5,6 @@ import com.gildedrose.Item;
 class BackstagePassesUpdateStrategy implements UpdateStrategy {
 
     @Override
-    public boolean isApplicable(Item item) {
-        return "Backstage passes to a TAFKAL80ETC concert".equals(item.name);
-    }
-
-    @Override
     public void update(Item item) {
         if (item.quality < 50) {
             item.quality++;

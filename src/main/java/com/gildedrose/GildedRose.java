@@ -1,19 +1,19 @@
 package com.gildedrose;
 
 import com.gildedrose.strategy.UpdateStrategy;
-import com.gildedrose.strategy.UpdateStrategyService;
+import com.gildedrose.strategy.UpdateStrategyFactory;
 
 class GildedRose {
     Item[] items;
-    private final UpdateStrategyService updateStrategyService;
+    private final UpdateStrategyFactory updateStrategyFactory;
     public GildedRose(Item[] items) {
         this.items = items;
-        this.updateStrategyService = new UpdateStrategyService();
+        this.updateStrategyFactory = new UpdateStrategyFactory();
     }
 
     public void updateQuality() {
         for (Item item : items) {
-            UpdateStrategy strategy = updateStrategyService.findUpdateStrategyFor(item);
+            UpdateStrategy strategy = updateStrategyFactory.createUpdateStrategy(item.name);
             strategy.update(item);
         }
     }
