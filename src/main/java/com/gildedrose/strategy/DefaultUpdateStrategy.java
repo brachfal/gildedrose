@@ -2,11 +2,11 @@ package com.gildedrose.strategy;
 
 import com.gildedrose.Item;
 
-class GenericUpdateStrategy implements UpdateStrategy {
+class DefaultUpdateStrategy implements UpdateStrategy {
 
     @Override
     public boolean isApplicable(Item item) {
-        return true;
+        return false;
     }
 
     @Override
@@ -14,7 +14,9 @@ class GenericUpdateStrategy implements UpdateStrategy {
         if (item.quality > 0) {
             item.quality--;
         }
+
         item.sellIn--;
+
         if (item.quality > 0) {
             item.quality--;
         }
