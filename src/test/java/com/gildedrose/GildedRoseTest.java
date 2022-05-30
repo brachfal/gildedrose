@@ -111,8 +111,8 @@ class GildedRoseTest {
         app.updateQuality();
 
         assertEquals("Aged Brie", app.items[0].name);
-        assertEquals(50, app.items[0].quality);
         assertEquals(1, app.items[0].sellIn);
+        assertEquals(50, app.items[0].quality);
     }
     @Test
     void shouldSulfurasNeverHasToBeSoldOrDecreasesInQuality() {
@@ -122,8 +122,8 @@ class GildedRoseTest {
         app.updateQuality();
 
         assertEquals("Sulfuras, Hand of Ragnaros", app.items[0].name);
-        assertEquals(80, app.items[0].quality);
         assertEquals(10, app.items[0].sellIn);
+        assertEquals(80, app.items[0].quality);
     }
     @Test
     void shouldQualityDegradesTwiceWhenSellDatePasses() {
@@ -133,8 +133,26 @@ class GildedRoseTest {
         app.updateQuality();
 
         assertEquals("Elixir of the Mongoose", app.items[0].name);
-        assertEquals(8, app.items[0].quality);
         assertEquals(-1, app.items[0].sellIn);
+        assertEquals(8, app.items[0].quality);
+    }
+
+    @Test
+    void shouldConjuredItemDegradesInQualityTwiceFast() {
+        Item[] items = new Item[] { new Item("Conjured Mana Cake", 3, 6) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals("Conjured Mana Cake", app.items[0].name);
+        assertEquals(2, app.items[0].sellIn);
+        assertEquals(4, app.items[0].quality);
+
+        app.updateQuality();
+
+        assertEquals("Conjured Mana Cake", app.items[0].name);
+        assertEquals(1, app.items[0].sellIn);
+        assertEquals(2, app.items[0].quality);
     }
 
 }

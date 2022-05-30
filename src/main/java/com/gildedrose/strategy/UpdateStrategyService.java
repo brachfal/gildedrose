@@ -9,7 +9,8 @@ public final class UpdateStrategyService {
     private final List<UpdateStrategy> specificStrategies = List.of(
         new SulfurasUpdateStrategy(),
         new AgedBrieUpdateStrategy(),
-        new BackstagePassesUpdateStrategy()
+        new BackstagePassesUpdateStrategy(),
+        new ConjuredUpdateStrategy()
     );
 
     public UpdateStrategy findUpdateStrategyFor(final Item item) {
